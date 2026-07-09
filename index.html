@@ -16,23 +16,25 @@ body{min-height:100vh;background:#dde3ee;display:flex;flex-direction:column;alig
 .ps-btn.active{background:#1677FF;color:#fff}
 
 /* ═══════════════ 手机端 ═══════════════ */
+/* 设备框按 iPhone 15 Pro 真实比例 393×852（约 1:2.17） */
 .mobile-view{display:flex;flex-direction:column;align-items:center;width:100%}
 .device{
-  width:clamp(320px,92vw,414px);
-  border-radius:clamp(36px,9vw,50px);
+  width:clamp(300px,360px,393px);
+  aspect-ratio:393/852;
+  border-radius:44px;
   box-shadow:0 0 0 2px #555,0 0 0 11px #1a1a1a,0 0 0 13px #444,0 36px 90px rgba(0,0,0,.4);
-  overflow:hidden;background:#1a1a1a;position:relative
+  overflow:hidden;background:#1a1a1a;position:relative;
+  max-height:92vh
 }
-.notch-bar{height:30px;background:#1a1a1a;display:flex;align-items:center;justify-content:center}
+.notch-bar{height:30px;background:#1a1a1a;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .notch-pill{width:92px;height:14px;background:#080808;border-radius:9px}
-.screen{height:clamp(580px,82vh,844px);overflow:hidden;background:#f1f2f6;display:flex;flex-direction:column;position:relative}
-.home-bar-wrap{height:22px;background:#1a1a1a;display:flex;align-items:center;justify-content:center}
+.screen{flex:1;overflow:hidden;background:#f1f2f6;display:flex;flex-direction:column;position:relative;min-height:0}
+.home-bar-wrap{height:22px;background:#1a1a1a;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .home-bar{width:114px;height:4px;background:#444;border-radius:3px}
 
 /* ── 折叠屏展开适配（视口 ≥600px，如 Galaxy Z Fold 展开态 768px） ── */
 @media(min-width:600px){
-  .device{width:clamp(414px,48vw,768px);border-radius:clamp(40px,5vw,60px)}
-  .screen{height:clamp(680px,80vh,900px)}
+  .device{width:clamp(360px,393px,420px);max-height:88vh}
   .sbar-time{font-size:16px}
   .nav-ttl{font-size:18px}
   .card-title{font-size:16px}
@@ -43,8 +45,7 @@ body{min-height:100vh;background:#dde3ee;display:flex;flex-direction:column;alig
 
 /* ── 超小屏适配（<360px，如 iPhone SE 1st） ── */
 @media(max-width:359px){
-  .device{width:96vw;border-radius:32px}
-  .screen{height:80vh}
+  .device{width:96vw;border-radius:32px;aspect-ratio:auto;height:84vh;max-height:none}
   .navbar{padding:6px 8px 8px}
   .nav-ttl{font-size:15px}
   .card-title{font-size:14px}
