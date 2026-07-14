@@ -882,7 +882,8 @@ function openDetail(id){
   document.getElementById('listWrap').classList.add('hide');
   document.getElementById('detailView').classList.add('show');
   document.getElementById('backBtn').style.visibility='visible';
-  updateBackBadge();
+  if(curTab===0) updateBackBadge();
+  else document.getElementById('backBadge').style.display='none';
   document.getElementById('navTitle').textContent=item.title.length>11?item.title.slice(0,11)+'…':item.title;
   document.getElementById('detailInner').scrollTop=0;
 }
